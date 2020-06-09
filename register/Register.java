@@ -11,8 +11,8 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 
-//import client.MainGui;
-//import data.Peer;
+import clients.ClientsChatGUI;
+import AppData.Peer;
 import tags.Decode;
 import tags.Encode;
 import tags.Tags;
@@ -31,6 +31,8 @@ import java.net.Socket;
 
 
 public class Register {
+ protected static final String String_ = null;
+ protected static final Socket Socket_ = null;
  private static String NAME_FAILED = "THIS NAME CONTAINS INVALID CHARACTER. PLEASE TRY AGAIN";
  private static String NAME_EXIST = "THIS NAME HAS BEEN EXIST. PLEASE TRY REPLACE NEW NAME AGAIN";
  private static String SERVER_NOT_START = "TURN ON SERVER BEFORE START";
@@ -143,7 +145,7 @@ public void actionPerformed(ActionEvent arg0) {
        ErrorLb.setVisible(true); 
        return;
       }
-     // new MainGui(IP, portPeer, name, msg);
+     new ClientsChatGUI(name, guest, socketClient, portPeer);
       //new menuGUI(IP, portPeer, "toan", msg);
       frameLoginForm.dispose();
      } catch (Exception e) {
