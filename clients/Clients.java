@@ -158,7 +158,7 @@ public class Clients {
 		ObjectInputStream receivedChat = new ObjectInputStream(connclient.getInputStream());
 		String msg = (String) receivedChat.readObject();
 		if (msg.equals(Tags.CHAT_DENY_TAG)) { 
-			MainGui.request("Your friend denied connect with you!", false);
+			//Clients.request("Your friend denied connect with you!", false);
 			connclient.close(); 
 			return;
 		}
@@ -186,11 +186,11 @@ public class Clients {
 			connclient.close();
 		}
 		if (!isAccept) { 
-			MainGui.request("All your friend denied connect with you!", false);
+			//ClientsChatGUI.request("All your friend denied connect with you!", false);
 			return;
 		}
 		server.exit();
-		new GroupChatGui(nameUser,clientPort,nameUser , ListIP_Has_Creator, ListPort_hasCreator, ListGuest_hasCreator);
+		//new GroupChatGui(nameUser,clientPort,nameUser , ListIP_Has_Creator, ListPort_hasCreator, ListGuest_hasCreator);
 	return;
 	}
 
@@ -209,23 +209,23 @@ public class Clients {
 
 	public void updateFriend(){
 		int size = clientarray.size();
-		MainGui.resetList();
+		ClientsChatGUI.resetList();
 		//while loop
 		Peer peer=null;
 		int i = 0;
 		while (i < size) {
 			peer=clientarray.get(i);
 			if (!peer.getName().equals(nameUser))
-				MainGui.updateActiveMainGui(peer.getName());
+				ClientsChatGUI.updateActiveUser(peer.getName());
 			else {
 				for (int j = 0; j < peer.getListRequestFr().size(); j++) {
-					MainGui.updateRequestFrMainGui(peer.getListRequestFr().get(j));
+					ClientsChatGUI.updateRequestUser(peer.getListRequestFr().get(j));
 				}
 				for (int j = 0; j < peer.getListFr().size(); j++) {
 					for (int j2 = 0; j2 < size; j2++) {
 						if(peer.getListFr().get(j).equals(clientarray.get(j2).getName()) ) {
-							if(clientarray.get(j2).getState()==true) MainGui.updateFriendMainGui(clientarray.get(j2).getName(),true);
-							else MainGui.updateFriendMainGui(clientarray.get(j2).getName(),false); 
+							if(clientarray.get(j2).getState()==true) ClientsChatGUI.updateFriendUser(clientarray.get(j2).getName(),true);
+							else ClientsChatGUI.updateFriendUser(clientarray.get(j2).getName(),false); 
 					}
 				}
 				}

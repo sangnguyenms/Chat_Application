@@ -59,7 +59,7 @@ public class ConnectServer {
 					System.out.print(msg);
 					System.out.print(dataGroupChat);
 					if(name!=null) {
-						int res = MainGui.request("Account: " + name + " want to connect with you !", true);
+						int res = ClientsChatGUI.request("Account: " + name + " want to connect with you !", true);
 						ObjectOutputStream send = new ObjectOutputStream(connection.getOutputStream());
 						if (res == 1) {
 							send.writeObject(Tags.CHAT_DENY_TAG);
@@ -108,13 +108,13 @@ public class ConnectServer {
 								temp="";
 							}
 						}
-						int res = MainGui.request("Account: " + dataGroupChat.get(0) + "connected with you via Group "+GroupName, true);
+						int res = ClientsChatGUI.request("Account: " + dataGroupChat.get(0) + "connected with you via Group "+GroupName, true);
 						ObjectOutputStream send = new ObjectOutputStream(connection.getOutputStream());
 						if (res == 0 || res ==1) {
 							send.writeObject(Tags.CHAT_ACCEPT_TAG);
 							send.flush();
 							serverPeer.close(); 
-							new GroupChatGui(username,port,dataGroupChat.get(0), ListIP, ListPort,GroupName);
+							//new GroupChatGui(username,port,dataGroupChat.get(0), ListIP, ListPort,GroupName);
 						    
 						}
 						
