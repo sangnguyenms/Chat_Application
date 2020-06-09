@@ -1,3 +1,5 @@
+package server;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -15,7 +17,7 @@ import javax.swing.UIManager;
 
 
 public class ServerGUI {
-	public static short port = 8080;
+	public static int port = 8080;
 	private JFrame frServer;
 	private JTextField txtIP;
 	private static TextArea txtMessage;
@@ -146,7 +148,7 @@ public class ServerGUI {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					server = new Server(8080);
+					server = new Server(port);
 					
 					ServerGUI.updateMessage("START SERVER");
 					lbStates.setText("<html><font color='green'>ON</font></html>");

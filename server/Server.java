@@ -108,7 +108,7 @@ public class Server {
 						.toString(), Integer.parseInt(getDataUser.get(2))); 
 				ServerGUI.updateMessage(getDataUser.toString());
 				ServerGUI.updateMessage(getDataUser.get(0));	 
-				ServerGUI.updateNumberClient();
+				ServerGUI.incrNumOfClients();
 			} else
 				return false;
 		}
@@ -124,7 +124,7 @@ public class Server {
 			ServerGUI.updateMessage("Exit");
 			isExit=! Decode.updatePeerOnline(dataPeer, msg);		
 			ServerGUI.updateMessage(Boolean.toString(isExit));
-			if(isExit)ServerGUI.decreaseNumberClient();
+			if(isExit)ServerGUI.decrNumOfClients();
 		}
 		return true;
 	}
@@ -226,7 +226,7 @@ public class Server {
 		UserFriend newFriend= new UserFriend();
 		BufferedReader br =null;
 		try {
-			br = new BufferedReader(new FileReader("data\\friend.txt")); 
+			br = new BufferedReader(new FileReader("friends.txt")); 
 			int num=0;
 			char ch;
 			int j=0;
@@ -268,7 +268,7 @@ public class Server {
 		FileWriter out=null;
 		UserFriend friend=new UserFriend();
 		try {
-			out =  new FileWriter("data\\friend.txt");
+			out =  new FileWriter("friends.txt");
 			for (int i = 0; i < listFriend.size(); i++) {
 				friend=listFriend.get(i);
 				out.write(friend.getUser());out.write(',');
@@ -287,7 +287,7 @@ public class Server {
 		UserFriend newFriend= new UserFriend();
 		BufferedReader br =null;
 		try {
-			br = new BufferedReader(new FileReader("data\\requestFriend.txt")); 
+			br = new BufferedReader(new FileReader("requestFriend.txt")); 
 			int num=0;
 			char ch;
 			int j=0;
@@ -329,7 +329,7 @@ public class Server {
 		FileWriter out=null;
 		UserFriend friend=new UserFriend();
 		try {
-			out =  new FileWriter("data\\requestFriend.txt");
+			out =  new FileWriter("requestFriend.txt");
 			for (int i = 0; i < listFriend.size(); i++) {
 				friend=listFriend.get(i);
 				out.write(friend.getUser());out.write(',');
@@ -351,7 +351,7 @@ public class Server {
 		ArrayList<String> listRequestFr = null;
 		BufferedReader br =null;
 		try {
-			br = new BufferedReader(new FileReader("data\\account.txt")); 
+			br = new BufferedReader(new FileReader("users.txt")); 
 			System.out.print("Content\n");
 			int num=0;
 			char ch;
@@ -412,7 +412,7 @@ public class Server {
 		FileWriter out=null;
 		Peer peer=new Peer();
 		try {
-			out =  new FileWriter("data\\account.txt");
+			out =  new FileWriter("users.txt");
 			for (int i = 0; i < listPeer.size(); i++) {
 				peer=listPeer.get(i);
 				out.write(peer.getName());out.write(',');
